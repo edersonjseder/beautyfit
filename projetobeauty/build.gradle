@@ -1,0 +1,53 @@
+buildscript {
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+war {
+    baseName = 'test'
+    version =  '0.1.0'
+}
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    jcenter()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+configurations {
+    providedRuntime
+}
+
+// In this section you declare the dependencies for your production and test code
+dependencies {
+    
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile ('org.springframework.data:spring-data-jpa:1.0.0.RELEASE')
+    compile ('joda-time:joda-time')
+    compile ('org.jadira.usertype:usertype.core:3.1.0.CR1')
+    compile ('com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.2.1')
+    compile ('com.fasterxml.jackson.datatype:jackson-datatype-joda')
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    
+    compile 'org.codehaus.jackson:jackson-mapper-asl:1.9.13'
+    compile ("javax.servlet:javax.servlet-api:3.1.0")
+    
+    compile 'mysql:mysql-connector-java:5.1.6'
+}
