@@ -26,7 +26,7 @@ public class State implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="state_id")
-	private Long id;
+	private Integer id;
 	
 	private String name;
 	private String uf;
@@ -35,10 +35,10 @@ public class State implements Serializable{
 	private List<City> cities;
 	
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {

@@ -10,8 +10,9 @@ import br.com.beautyfit.model.Clients;
 
 
 @Transactional
-public interface ClientsRepository extends CrudRepository<Clients, Long> {
+public interface ClientsRepository extends CrudRepository<Clients, Integer> {
 
 	public Clients findByName(String name);
 	public List<Clients> findAll();
+	
 }

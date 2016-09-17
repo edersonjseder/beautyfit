@@ -44,7 +44,7 @@ public class ProductController {
 	
 	
 	@RequestMapping(value = "/{productId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Products> getProductsById(@PathVariable Long productId) {
+	public ResponseEntity<Products> getProductsById(@PathVariable Integer productId) {
 
 		Products product = productsRepository.findOne(productId);
 		
@@ -69,7 +69,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/{productId}", method = RequestMethod.PUT)
-	public @ResponseBody ResponseEntity<Products> update(@PathVariable Long productId, @RequestBody Products product) {
+	public @ResponseBody ResponseEntity<Products> update(@PathVariable Integer productId, @RequestBody Products product) {
 
 		Products productUpdated = productsRepository.findOne(productId);
 
@@ -92,7 +92,7 @@ public class ProductController {
 	
 	@RequestMapping(value = "/{productId}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void delete(@PathVariable Long productId) {
+	public void delete(@PathVariable Integer productId) {
 
 		Products product = productsRepository.findOne(productId);
 

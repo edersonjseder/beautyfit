@@ -20,13 +20,13 @@ import br.com.beautyfit.messages.Messages;
 import br.com.beautyfit.model.CustomerService;
 import br.com.beautyfit.repository.CustomerServiceRepository;
 
-@RequestMapping(value = Path.urls.SERVICES)
+@RequestMapping(value = Path.urls.SERVICES, produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
-public class CustomerServiceController {
+public class CustomerServiceController { 
 	
 	@Autowired
 	private CustomerServiceRepository customerServiceRepository;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<CustomerService>> listALL() {
 		
@@ -42,8 +42,8 @@ public class CustomerServiceController {
 		
 	}
 	
-	@RequestMapping(value = "/{customerServiceId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<CustomerService> getServicesById(@PathVariable Long customerServiceId) {
+	@RequestMapping(value = "/{customerServiceId}", method = RequestMethod.GET)
+	public ResponseEntity<CustomerService> getServicesById(@PathVariable Integer customerServiceId) {
 
 		CustomerService customerService = customerServiceRepository.findOne(customerServiceId);
 		
@@ -68,7 +68,7 @@ public class CustomerServiceController {
 	}
 	
 	@RequestMapping(value = "/{customerServiceId}", method = RequestMethod.PUT)
-	public @ResponseBody ResponseEntity<CustomerService> update(@PathVariable Long customerServiceId, @RequestBody CustomerService customerService) {
+	public @ResponseBody ResponseEntity<CustomerService> update(@PathVariable Integer customerServiceId, @RequestBody CustomerService customerService) {
 
 		CustomerService customerServiceUpdated = customerServiceRepository.findOne(customerServiceId);
 
@@ -91,7 +91,7 @@ public class CustomerServiceController {
 	
 	@RequestMapping(value = "/{customerServiceId}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void delete(@PathVariable Long customerServiceId) {
+	public void delete(@PathVariable Integer customerServiceId) {
 
 		CustomerService customerService = customerServiceRepository.findOne(customerServiceId);
 

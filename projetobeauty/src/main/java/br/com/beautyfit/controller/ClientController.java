@@ -20,7 +20,7 @@ import br.com.beautyfit.messages.Messages;
 import br.com.beautyfit.model.Clients;
 import br.com.beautyfit.repository.ClientsRepository;
 
-@RequestMapping(value = Path.urls.CLIENTS)
+@RequestMapping(value = Path.urls.CLIENTS, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 @RestController
 public class ClientController {
 	
@@ -42,8 +42,8 @@ public class ClientController {
 		
 	}
 	
-	@RequestMapping(value = "/{clientsId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Clients> getClientesById(@PathVariable Long clientsId) {
+	@RequestMapping(value = "/{clientsId}", method = RequestMethod.GET)
+	public ResponseEntity<Clients> getClientesById(@PathVariable Integer clientsId) {
 
 		Clients clients = clientsRepository.findOne(clientsId);
 		
@@ -68,7 +68,7 @@ public class ClientController {
 	}
 	
 	@RequestMapping(value = "/{clientsId}", method = RequestMethod.PUT)
-	public @ResponseBody ResponseEntity<Clients> update(@PathVariable Long clientsId, @RequestBody Clients clients) {
+	public @ResponseBody ResponseEntity<Clients> update(@PathVariable Integer clientsId, @RequestBody Clients clients) {
 
 		Clients clientsUpdated = clientsRepository.findOne(clientsId);
 
@@ -93,7 +93,7 @@ public class ClientController {
 	
 	@RequestMapping(value = "/{clientsId}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void delete(@PathVariable Long clientsId) {
+	public void delete(@PathVariable Integer clientsId) {
 
 		Clients clients = clientsRepository.findOne(clientsId);
 

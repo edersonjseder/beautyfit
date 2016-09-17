@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import org.joda.time.LocalDate;
 
+
 @Entity
 @Table(name="cash_register")
 public class CashRegister implements Serializable{

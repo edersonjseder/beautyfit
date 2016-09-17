@@ -20,7 +20,7 @@ public class Products implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="products_id")
-	private Long id;
+	private Integer id;
 	private String name;
 	private String description;
 	private String category;
@@ -29,10 +29,10 @@ public class Products implements Serializable{
 	private LocalDate validateDate;
 	private Double price;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {

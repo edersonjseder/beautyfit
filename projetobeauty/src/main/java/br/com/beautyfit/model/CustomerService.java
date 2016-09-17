@@ -25,7 +25,7 @@ public class CustomerService implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="customer_service_id")
-	private Long id;
+	private Integer id;
 	private String name;
 	private LocalDate serviceDate;
 	private String serviceTime;
@@ -44,10 +44,10 @@ public class CustomerService implements Serializable{
 	@JoinTable(name = "schedules_clients", joinColumns = @JoinColumn(name = "customer_service_id", referencedColumnName = "customer_service_id"), inverseJoinColumns = @JoinColumn(name = "clients_id", referencedColumnName = "clients_id"))
 	private List<Clients> clients;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {

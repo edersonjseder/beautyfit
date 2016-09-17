@@ -10,5 +10,8 @@ public class Path {
 		public  final static String SERVICES =  BASE_URL + "/services";
 		public  final static String PROVIDERS =  BASE_URL + "/providers";
 		public  final static String EMPLOYEES =  BASE_URL + "/employees";
+		public  final static String BILLSTOPAY =  BASE_URL + "/billsToPay";
+		public  final static String BILLSTORECEIVE =  BASE_URL + "/billsToReceive";
+		public  final static String USERS =  BASE_URL + "/users";
 	}
 }

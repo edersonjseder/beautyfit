@@ -20,7 +20,7 @@ public class Clients implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="clients_id")
-	private Long id;
+	private Integer id;
 	
 	private String name;
 	private String cpf;
@@ -37,11 +37,11 @@ public class Clients implements Serializable{
 	@ManyToMany(mappedBy = "clients")
 	private List<CustomerService> customerServices;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

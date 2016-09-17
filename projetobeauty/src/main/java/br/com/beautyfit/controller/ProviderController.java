@@ -43,7 +43,7 @@ public class ProviderController {
 	}
 	
 	@RequestMapping(value = "/{providersId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Providers> getProvidersById(@PathVariable Long providersId) {
+	public ResponseEntity<Providers> getProvidersById(@PathVariable Integer providersId) {
 
 		Providers providers = providerRepository.findOne(providersId);
 		
@@ -68,7 +68,7 @@ public class ProviderController {
 	}
 	
 	@RequestMapping(value = "/{providersId}", method = RequestMethod.PUT)
-	public @ResponseBody ResponseEntity<Providers> update(@PathVariable Long providersId, @RequestBody Providers providers) {
+	public @ResponseBody ResponseEntity<Providers> update(@PathVariable Integer providersId, @RequestBody Providers providers) {
 
 		Providers providersUpdated = providerRepository.findOne(providersId);
 
@@ -94,7 +94,7 @@ public class ProviderController {
 	
 	@RequestMapping(value = "/{providersId}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void delete(@PathVariable Long providersId) {
+	public void delete(@PathVariable Integer providersId) {
 
 		Providers providers = providerRepository.findOne(providersId);
 

@@ -32,7 +32,7 @@ public class EmployeeController {
 		
 		List<Employees> employees = employeesRepository.findAll();
 		
-		if(employees.isEmpty()){
+		if(employees != null){
 			
 			return new ResponseEntity<List<Employees>>(HttpStatus.NO_CONTENT);
 			
@@ -43,7 +43,7 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value = "/{employeesId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Employees> getClientesById(@PathVariable Long employeesId) {
+	public ResponseEntity<Employees> getEmployeesById(@PathVariable Integer employeesId) {
 
 		Employees employees = employeesRepository.findOne(employeesId);
 		
@@ -68,7 +68,7 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value = "/{employeesId}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<Employees> update(@PathVariable Long employeesId, @RequestBody Employees employees) {
+	public @ResponseBody ResponseEntity<Employees> update(@PathVariable Integer employeesId, @RequestBody Employees employees) {
 
 		Employees employeesUpdated = employeesRepository.findOne(employeesId);
 
@@ -100,7 +100,7 @@ public class EmployeeController {
 	
 	@RequestMapping(value = "/{employeesId}", method = RequestMethod.DELETE)
 	@ResponseStatus(value = HttpStatus.OK)
-	public void delete(@PathVariable Long employeesId) {
+	public void delete(@PathVariable Integer employeesId) {
 
 		Employees employees = employeesRepository.findOne(employeesId);
 

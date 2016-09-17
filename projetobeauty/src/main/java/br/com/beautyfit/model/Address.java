@@ -28,7 +28,7 @@ public class Address implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="address_id")
-	private Long id;
+	private Integer id;
 
 	private String address;
 	private String neighborhood;
@@ -63,10 +63,10 @@ public class Address implements Serializable {
 	public void setClients(List<Clients> clients) {
 		this.clients = clients;
 	}
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getAddress() {

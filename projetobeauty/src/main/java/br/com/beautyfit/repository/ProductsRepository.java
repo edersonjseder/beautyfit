@@ -9,7 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import br.com.beautyfit.model.Products;
 
 @Transactional
-public interface ProductsRepository extends CrudRepository<Products, Long> {
+public interface ProductsRepository extends CrudRepository<Products, Integer> {
 	
 	public List<Products> findAll();
 
