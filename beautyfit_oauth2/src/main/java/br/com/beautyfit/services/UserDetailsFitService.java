@@ -24,7 +24,7 @@ public class UserDetailsFitService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		UserAccount theUser = userRepository.findByUsername(username);
-		
+		System.out.println("");
 		if(theUser == null){
 			throw new UsernameNotFoundException(username + " not found");
 		}
@@ -38,7 +38,7 @@ public class UserDetailsFitService implements UserDetailsService {
 		
 		Collection<? extends GrantedAuthority> authorities;
 		
-		if (username.equals("anderson_admin")) {
+		if (username.equals("admin")) {
 			
 			authorities = AuthorityUtils.createAuthorityList("ROLE_ADMIN", "ROLE_USER");
 			

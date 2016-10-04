@@ -59,16 +59,12 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter{
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-               .withClient("sampleClientId")
-               .authorizedGrantTypes("implicit")
-               .scopes("read")
-               .autoApprove(true)
-               .and()
-               .withClient("clientIdPassword")
-               .secret("secret")
+               .withClient("projetobeautyfit") // Header parameter Base 64 encoded: Client:Secret = projetobeautyfit:123456
                .authorizedGrantTypes("password","authorization_code", "refresh_token", "client_credentials")
+               .authorities("ADMIN")
+               .scopes("read", "write")
                .resourceIds(RESOURCE_ID)
-               .scopes("read", "write");
+               .secret("123456");
         
         clients.configure(new ClientDetailsServiceBuilder<>());
         
@@ -77,8 +73,7 @@ public class OAuthConfiguration extends AuthorizationServerConfigurerAdapter{
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
         
-    	oauthServer.tokenKeyAccess("permitAll()")
-    			   .checkTokenAccess("isAuthenticated()");
+    	oauthServer.tokenKeyAccess("isAnonymous() || permitAll()").checkTokenAccess("permitAll()");
     	
     }
 

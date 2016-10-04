@@ -1,7 +1,6 @@
 package br.com.beautyfit.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -42,15 +40,6 @@ public class Employees implements Serializable{
 	private String email;
 	private Double salary;
 	private String employeeStatus;
-	
-	@ManyToMany(mappedBy = "employees")
-	private List<Address> addresses;
-	
-	@ManyToMany(mappedBy = "employees")
-	private List<Schedules> schedules;
-	
-	@ManyToMany(mappedBy = "employees")
-	private List<CustomerService> customerServices;
 	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name = "user_id")
@@ -112,14 +101,6 @@ public class Employees implements Serializable{
 		this.email = email;
 	}
 
-	public List<Address> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(List<Address> addresses) {
-		this.addresses = addresses;
-	}
-
 	public String getRg() {
 		return rg;
 	}
@@ -128,28 +109,12 @@ public class Employees implements Serializable{
 		this.rg = rg;
 	}
 
-	public List<Schedules> getSchedules() {
-		return schedules;
-	}
-
-	public void setSchedules(List<Schedules> schedules) {
-		this.schedules = schedules;
-	}
-
 	public UserAccount getUser() {
 		return user;
 	}
 
 	public void setUser(UserAccount user) {
 		this.user = user;
-	}
-
-	public List<CustomerService> getCustomerServices() {
-		return customerServices;
-	}
-
-	public void setCustomerServices(List<CustomerService> customerServices) {
-		this.customerServices = customerServices;
 	}
 
 	public Double getSalary() {

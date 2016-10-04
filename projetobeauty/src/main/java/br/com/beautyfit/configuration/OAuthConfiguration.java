@@ -22,6 +22,8 @@ import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import br.com.beautyfit.endpoint.Path;
+
 @Configuration
 @EnableResourceServer
 public class OAuthConfiguration extends ResourceServerConfigurerAdapter {
@@ -40,9 +42,9 @@ public class OAuthConfiguration extends ResourceServerConfigurerAdapter {
        
 		RemoteTokenServices tokenService = new RemoteTokenServices();
 		
-        tokenService.setClientId("clientapp");
+        tokenService.setClientId("projetobeautyfit");
         tokenService.setClientSecret("123456");
-        tokenService.setCheckTokenEndpointUrl("http://localhost:8081/oauth/check_token");
+        tokenService.setCheckTokenEndpointUrl(Path.tokenUrl.TOKEN_PATH);
 
         resources.resourceId(RESOURCE_ID)
                  .tokenServices(tokenService);

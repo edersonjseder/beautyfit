@@ -38,7 +38,7 @@ public class UserDetailsFitService implements UserDetailsService {
 		
 		Collection<? extends GrantedAuthority> authorities;
 		
-		if (username.equals("anderson_admin")) {
+		if (username.equals("admin")) {
 			
 			authorities = AuthorityUtils.createAuthorityList("ROLE_ADMIN", "ROLE_USER");
 			
